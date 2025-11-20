@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+  	<title> Constructors</title>
+  </head>
+  <body>
+  <h1>object constructor</h1>
+  
+  <script> 
+  function Book(title, author, pages,  read) {
+  if (!new.target) {
+  throw Error("you must use the 'new' operator to call this contructor");
+  }
+  this.title = title; 
+  this.author = author; 
+  this.pages = pages; 
+  this.read = read; 
+  this.info = function() {
+  return `${this.title} by ${this.author}, ${this.pages} pages ` + (this.read ? "already read" : "not read yet");
+  };
+  
+  }
+  const myBook = new Book("the myBook", "H. R tolkein", 295, true); 
+  
+  const myBook2 = new Book("the myBook2", "C. H tolkein", 395, false);
+  
+  console.log(myBook.info());
+  console.log(myBook2.info());
+  
+  console.log(Object.getPrototypeOf(myBook) === Book.prototype)
+  console.log(Object.getPrototypeOf(myBook2) === Book.prototype)
+  
+  </script>
+  </body>
+  </html>
