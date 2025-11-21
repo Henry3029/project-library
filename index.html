@@ -4,34 +4,37 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
   	<title> Constructors</title>
+  <link rel="stylesheet" href="style.css">
   </head>
   <body>
   <h1>object constructor</h1>
+  <button id="newBookBtn">New Book</button>
+
+<dialog id="bookDialog">
+  <form id="bookForm">
+    <h2>Add New Book</h2>
+
+    <label>Title</label>
+    <input type="text" id="titleInput" required>
+
+    <label>Author</label>
+    <input type="text" id="authorInput" required>
+
+    <label>Pages</label>
+    <input type="number" id="pagesInput" required>
+
+    <label>
+      <input type="checkbox" id="readInput">
+      Have you read it?
+    </label>
+
+    <button type="submit">Add Book</button>
+    <button type="button" id="closeDialogBtn">Cancel</button>
+  </form>
+</dialog>
+
+<div id="libraryDisplay"></div>
   
-  <script> 
-  function Book(title, author, pages,  read) {
-  if (!new.target) {
-  throw Error("you must use the 'new' operator to call this contructor");
-  }
-  this.title = title; 
-  this.author = author; 
-  this.pages = pages; 
-  this.read = read; 
-  this.info = function() {
-  return `${this.title} by ${this.author}, ${this.pages} pages ` + (this.read ? "already read" : "not read yet");
-  };
-  
-  }
-  const myBook = new Book("the myBook", "H. R tolkein", 295, true); 
-  
-  const myBook2 = new Book("the myBook2", "C. H tolkein", 395, false);
-  
-  console.log(myBook.info());
-  console.log(myBook2.info());
-  
-  console.log(Object.getPrototypeOf(myBook) === Book.prototype)
-  console.log(Object.getPrototypeOf(myBook2) === Book.prototype)
-  
-  </script>
+  <script src="script.js"></script>
   </body>
   </html>
